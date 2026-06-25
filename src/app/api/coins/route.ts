@@ -7,9 +7,17 @@ export async function GET() {
     `${baseUrl}/coins/markets` +
     `?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`
 
+  const apiKey = process.env.COINGECKO_API_KEY
+  const headers: Record<string, string> = {
+    'Accept': 'application/json',
+  }
+  if (apiKey) {
+    headers['x-cg-demo-api-key'] = apiKey
+  }
+
   let res: Response
   try {
-    res = await fetch(url)
+    res = await fetch(url, { headers })
   } catch {
     return NextResponse.json(
       { error: 'BAD_GATEWAY', message: 'Não foi possível conectar à API externa' },

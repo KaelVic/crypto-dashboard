@@ -29,9 +29,17 @@ export async function GET(
   const baseUrl = process.env.COINGECKO_API_URL ?? 'https://api.coingecko.com/api/v3'
   const url = `${baseUrl}/coins/${id}/market_chart?vs_currency=usd&days=${days}`
 
+  const apiKey = process.env.COINGECKO_API_KEY
+  const headers: Record<string, string> = {
+    'Accept': 'application/json',
+  }
+  if (apiKey) {
+    headers['x-cg-demo-api-key'] = apiKey
+  }
+
   let res: Response
   try {
-    res = await fetch(url)
+    res = await fetch(url, { headers })
   } catch {
     return NextResponse.json(
       { error: 'BAD_GATEWAY', message: 'Não foi possível conectar à API externa' },
