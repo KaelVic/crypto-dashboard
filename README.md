@@ -2,6 +2,8 @@
 
 > Dashboard de mercado cripto que consome a API CoinGecko via backend intermediário — o front nunca chama a API externa diretamente.
 
+🔗 **Link do Projeto:** [https://crypto-dashboard-murex-five.vercel.app](https://crypto-dashboard-murex-five.vercel.app)
+
 ![Screenshot do Dashboard](./docs/screenshot.png)
 
 ## O Problema
@@ -51,7 +53,7 @@ CoinGecko API (pública)
 ## Como Rodar Localmente
 
 ```bash
-git clone https://github.com/SEU_USER/crypto-dashboard.git
+git clone https://github.com/KaelVic/crypto-dashboard.git
 cd crypto-dashboard
 cp .env.example .env.local
 npm install
